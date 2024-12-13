@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleport Clicker Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .game-frame {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .click-button {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .click-button:hover {
+            transform: scale(1.1);
+        }
+
+        .score {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-frame" id="gameFrame">
+        <button class="click-button" id="clickButton"></button>
+    </div>
+    <div class="score" id="score">Score: 0</div>
+
+    <script>
+        const gameFrame = document.getElementById('gameFrame');
+        const clickButton = document.getElementById('clickButton');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+
+        function getRandomPosition() {
+            const frameRect = gameFrame.getBoundingClientRect();
+            const buttonWidth = clickButton.offsetWidth;
+            const buttonHeight = clickButton.offsetHeight;
+
+            const maxX = frameRect.width - buttonWidth;
+            const maxY = frameRect.height - buttonHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            return { x: randomX, y: randomY };
+        }
+        clickButton.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+
+            const newPosition = getRandomPosition();
+            clickButton.style.left = `${newPosition.x}px`;
+            clickButton.style.top = `${newPosition.y}px`;
+        });
+
+        // Initialize button position
+        const initialPosition = getRandomPosition();
+        clickButton.style.left = `${initialPosition.x}px`;
+        clickButton.style.top = `${initialPosition.y}px`;
+    </script>
+</body>
+</html>

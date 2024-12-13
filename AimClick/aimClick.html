@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AimClick</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <h1>AimClick</h1>
+    <p>Score: <span id="score">0</span></p>
+    <p>Score par click: <span id="scorePerClick">0</span></p>
+    <div class="game-frame" id="gameFrame">
+        <button class="click-button" id="clickButton"></button>
+    </div>
+    <h2>Améliorations</h2>
+    <div>
+        <span>+1</span>
+        <button id="upgrade1">Acheter (Coût: <span id="upgradeCost1">10</span>)</button>
+        <span id="upgrade1Count">0</span>
+    </div>
+    <div>
+        <span>+5</span>
+        <button id="upgrade2">Acheter (Coût: <span id="upgradeCost2">50</span>)</button>
+        <span id="upgrade2Count">0</span>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+</html>
